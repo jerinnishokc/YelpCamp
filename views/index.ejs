@@ -1,0 +1,45 @@
+<% include partials/header %>
+
+<div class="container">
+	<header class="jumbotron">
+		<h1 class="display-1">
+			YelpCamp Grounds
+		</h1>
+		<p>	
+			We provide the best campgrounds in the world!
+		</p>
+		<a href="/campgrounds/new" class="btn btn-primary btn-lg">
+			Start booking
+		</a>
+	</header>	
+	
+	<div class="row">
+		<%campgrounds.forEach((campground) => {%>
+			<div class="col-md-3 col-sm-6 mb-2">
+				<!-- <div class="card" style="width: 18rem;">
+					<img src="<%= campground.url %>" class="card-img-top" alt="mountains">
+					<div class="card-body">
+						<h5 class="card-title"><%= campground.name %></h5>
+						<p class="card-text"><%= campground.desc %></p>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">Go somewhere</a>
+					</div>
+				</div> -->
+				<div class="thumbnail">
+					<img src="<%= campground.url %>" alt="mountains">
+					<!-- <div class="thumbnail"> -->
+					<div class="flash-card">
+						<h5 class="caption"><%= campground.name %></h5>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">Go somewhere</a>
+					</div>						
+					<!-- <p class="card-text"><%= campground.desc %></p> -->
+					<!-- </div> -->
+				</div>
+			</div>			
+		<%});%>
+	</div>
+</div>
+
+
+
+
+<% include partials/footer %>
