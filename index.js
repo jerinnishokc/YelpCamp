@@ -9,7 +9,8 @@ var express = require('express'),
 	comment = require('./models/comments'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-local'),
-	passportLocalMongoose = require('passport-local-mongoose');
+	passportLocalMongoose = require('passport-local-mongoose'),
+	methodOverride = require('method-override');
 	
 var campgroundRoute = require('./routes/campgrounds'),
 	commentRoute = require('./routes/comments'),
@@ -31,6 +32,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 
 //Adding a middleware to all the routes
 app.use(function(req,res,next){
@@ -42,7 +44,7 @@ app.use(function(req,res,next){
 //=========================
 // Seeding the DB
 //=========================
-seedDB();
+//seedDB();
 
 //=========================
 // Passport Configuration
@@ -60,9 +62,9 @@ app.get('/', (req,res) => {
 	res.send('This is the index route');
 });
 
-app.use(campgroundRoute);
-app.use(commentRoute);
-app.use(authRoute);
+app.use('/campgrounds',campgroundRoute);
+app.use('/campgrounds/:id/comments',commentRoute);
+app.use('/',authRoute);
 
 app.listen(4000, () => {
 	console.log('Server is started and is running at PORT 4000');

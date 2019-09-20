@@ -23,3 +23,7 @@
 	text-align: center;
 	padding-bottom: 10px;
 }
+
+.campgroundFormButtons {
+	display: inline!important;
+}
