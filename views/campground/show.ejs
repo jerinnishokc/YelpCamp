@@ -34,6 +34,7 @@
 					<p>
 						<em>- Created by <%=campground.author.username%></em>
 					</p>
+					<% if(currentUser && campground.author.id.equals(currentUser._id)){%>
 					<form class="campgroundFormButtons" action="/campgrounds/<%= campground._id %>/edit" method="GET">
 						<button class="btn btn-warning">
 							Edit
@@ -44,6 +45,7 @@
 							Delete
 						</button>
 					</form>	
+					<%}%>
 				</div>
 			</div>			
 			<div class="well">
@@ -60,7 +62,15 @@
 							</span>
 							<p>
 								<%= comment.text %>
-							</p>							
+							</p>
+							<% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
+							<a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-warning">Edit</a>
+							<form id="commentDeleteBtnForm" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+								<button class="btn btn-danger">
+									Delete
+								</button>
+							</form>
+							<% } %>
 						</div>						
 					</div>					
 				<%})%>

@@ -11,6 +11,7 @@ var express = require('express'),
 	LocalStrategy = require('passport-local'),
 	passportLocalMongoose = require('passport-local-mongoose'),
 	methodOverride = require('method-override');
+	// expressBack = require('express-back');
 	
 var campgroundRoute = require('./routes/campgrounds'),
 	commentRoute = require('./routes/comments'),
@@ -33,6 +34,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
+// app.use(expressBack());
 
 //Adding a middleware to all the routes
 app.use(function(req,res,next){

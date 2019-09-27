@@ -25,5 +25,9 @@
 }
 
 .campgroundFormButtons {
-	display: inline!important;
+	display: inline;
+}
+
+#commentDeleteBtnForm {
+	display: inline;
 }
